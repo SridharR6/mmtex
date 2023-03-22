@@ -1,0 +1,15 @@
+.menubar{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.loadingdb{
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background-color:black;
+    opacity: 0.75;
+    height: 100vh;
+}
