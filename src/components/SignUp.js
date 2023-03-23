@@ -4,7 +4,7 @@ import "../styles/SignUp.css";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import loading from "../images/loading.gif";
-// import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 
 
 
@@ -21,45 +21,68 @@ export const SignUp = ()=>{
     const [mob, setMob] = useState();
     const [isLoading, setIsLoading] = useState(false);
 
-    // function sendmail(){
-    //     const templateParams = {
-    //         name: this.state.n,
-    //         crushname: this.state.c,
-    //         result: this.state.res
-    //     };
+    function mailToUser(){
+        const templateParams = {
+            username:`${fname} ${lname}`,
+            usermail:mailid
+        };
         
-    //     emailjs.send('service_zqkwgrr','template_ix4hxkc', templateParams, 'wCJRAs2Rb3c24MkDO')
-    //         .then((response) => {
-    //            console.log('SUCCESS!', response.status, response.text);
-    //         }, (err) => {
-    //            console.log('FAILED...', err);
-    //         });
-    // }
+        emailjs.send('service_sa7kzfy','template_yiqn9lh', templateParams, 'BNv8-AvrwcGGztuGs')
+            .then((response) => {
+               console.log('SUCCESS!', response.status, response.text);
+            }, (err) => {
+               console.log('FAILED...', err);
+            });
+    }
+
+    function mailToAdmin(){
+        const templateParams = {
+            username:`${fname} ${lname}`,
+            usermail:mailid,
+            usermob:mob
+        };
+        
+        emailjs.send('service_sa7kzfy','template_gfale2c', templateParams, 'BNv8-AvrwcGGztuGs')
+            .then((response) => {
+               console.log('SUCCESS!', response.status, response.text);
+            }, (err) => {
+               console.log('FAILED...', err);
+            });
+    }
 
     const signup = (e)=>{
-        
-        axios.post("http://localhost:6523/api/signup",{
-            'fname':fname,
-            'lname':lname,
-            'dob':dob,
-            'mailid':mailid,
-            'mob':mob,
-            'pwd':pwd
-        }).then(resp=>{
-            setIsLoading(false);
-            if(resp.status == 219){
-                alert("Successfully signed up...Login to view your profile");
-                navigate("/login");
-            }
-            else if(resp.status == 299){
-                alert("mobile number already exists....");
-            }
-            else if(resp.status == 298){
-                alert("mail id already exists....");
-            }
-
-        }).catch(err=>alert("some error occured try refreshing the page"));
         e.preventDefault();
+        setIsLoading(true)
+        if(pwd!=pwd1){
+            alert("passwords are not matching enter properly...");
+            setIsLoading(false);
+        }
+        else{
+            axios.post("http://localhost:6523/api/signup",{
+                'fname':fname,
+                'lname':lname,
+                'dob':dob,
+                'mailid':mailid,
+                'mob':mob,
+                'pwd':pwd
+            }).then(resp=>{
+                setIsLoading(false);
+                if(resp.status == 219){
+                    alert("Successfully signed up...Login to view your profile");
+                    mailToUser();
+                    mailToAdmin();
+                    navigate("/userlogin");
+                }
+                else if(resp.status == 299){
+                    alert("mobile number already exists....");
+                }
+                else if(resp.status == 298){
+                    alert("mail id already exists....");
+                }
+
+            }).catch(err=>alert("some error occured try refreshing the page"));
+            
+        }
     }
     const reset = (e)=>{
         setFname("");
@@ -115,13 +138,13 @@ export const SignUp = ()=>{
                         <br></br>
 
                         <MDBRow>
-                            <MDBCol offsetMd={3}> <button type="submit" onClick={()=>setIsLoading(true)}>Submit</button> </MDBCol>
+                            <MDBCol offsetMd={3}> <button type="submit">Submit</button> </MDBCol>
                             <MDBCol> <button onClick={reset}>Clear</button> </MDBCol>
                         </MDBRow>
                         <br></br>
 
                         <MDBRow>
-                            <MDBCol offsetMd={5}> <a onClick={()=>navigate('/login')} className="linkst">Already an User?</a> </MDBCol>
+                            <MDBCol offsetMd={5}> <a onClick={()=>navigate('/userlogin')} className="linkst">Already an User?</a> </MDBCol>
                         </MDBRow>
                         <br></br>
                     </MDBContainer>

@@ -49,6 +49,6 @@ button:hover{
     align-items: center;
     z-index: 1000;
     background-color: black;
-    opacity: 0.70;
+    opacity: 0.80;
     height: calc(100vh - 70px);
 }

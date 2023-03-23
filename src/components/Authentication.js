@@ -3,13 +3,14 @@ import React, { useContext, useState } from "react";
 const authContext = React.createContext();
 
 export const AuthenticationProvider = (props)=>{
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [userLoggedIn, setUserLoggedIn] = useState(false);
+    const [adminLoggedIn, setAdminLoggedIn] = useState(false);
     const [dbConnect, setDbConnect] = useState(false);
     
     return(
 
         <>
-            <authContext.Provider value={{loggedIn, setLoggedIn, setCurrUser, currUser,id, setId, dbConnect, setDbConnect}}>
+            <authContext.Provider value={{userLoggedIn, setUserLoggedIn, dbConnect, setDbConnect, adminLoggedIn, setAdminLoggedIn}}>
                 {props.children}
             </authContext.Provider>
         </>

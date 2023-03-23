@@ -1,20 +1,19 @@
 import { MDBContainer, MDBInput, MDBRow,MDBCol, MDBBtn } from "mdb-react-ui-kit";
 import {useState } from "react";
-import "../styles/Login.css";
+import "../styles/UserLogin.css";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import loading from "../images/loading.gif";
-import { useAuth } from "./Authentication";
 
 
-export const Login = ()=>{
+export const UserLogin = ()=>{
     const [mailid, setMailid] = useState();
     const [pwd, setPwd] = useState();
     const [isLoading, setIsLoading] = useState(false);
-    const auth = useAuth();
 
     const login = (e)=>{
-        axios.post("http://localhost:6523/api/login",{
+        setIsLoading(true);
+        axios.post("http://localhost:6523/api/userlogin",{
             'mailid':mailid,
             'pwd':pwd
         }).then((resp)=>{
@@ -28,7 +27,7 @@ export const Login = ()=>{
             else if(resp.status == 295){
                 
                 alert("successfully logged in....");
-                localStorage.setItem("loggedIn",true);
+                localStorage.setItem("userLoggedIn",true);
                 var user = {
                     "userId":resp.data._id,
                     'fname':resp.data.fname,
@@ -78,7 +77,7 @@ export const Login = ()=>{
                             <br></br>
 
                             <MDBRow center>
-                                <MDBCol offsetSm={3}> <button type="submit" onClick={()=>setIsLoading(true)}>SUBMIT</button> </MDBCol>
+                                <MDBCol offsetSm={3}> <button type="submit">SUBMIT</button> </MDBCol>
                                 <MDBCol> <button onClick={reset}>CLEAR</button> </MDBCol>
                             </MDBRow>
                             <br></br>
@@ -86,6 +85,13 @@ export const Login = ()=>{
                             <MDBRow>
                                 <center>
                                 <MDBCol> <a onClick={()=>navigate('/signup')} className="linkst">Don't Have An Account?</a> </MDBCol>
+                                </center>
+                            </MDBRow>
+                            <br></br>
+
+                            <MDBRow>
+                                <center>
+                                <MDBCol> <a onClick={()=>navigate('/adminlogin')} className="linkst">Login as Admin...</a> </MDBCol>
                                 </center>
                             </MDBRow>
                             <br></br>

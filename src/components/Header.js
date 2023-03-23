@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import loading from "../images/loading.gif";
-
+// import { Footer } from "./Footer";
 
 export const Header = ()=>{
     
@@ -18,10 +18,7 @@ export const Header = ()=>{
     
     useEffect(
         ()=>{
-            document.title = "MM Tex";
-            if(localStorage.getItem("loggedIn")!=null && localStorage.getItem("loggedIn")===true){
-                auth.setLoggedIn(true);
-            }
+            document.title = "MM Tex";            
             axios.get("http://localhost:6523/api/start").then((resp,err)=>{
                 if(resp.status == 200){
                     console.log("db connected successfully...");
@@ -30,6 +27,26 @@ export const Header = ()=>{
             }).catch(err=>alert("there is some in error in reaching the db... try later"));
         },[rendered]
     )
+    
+
+    useEffect(
+        ()=>{
+            if(localStorage.getItem("userLoggedIn")=="true"){
+                auth.setUserLoggedIn(true);
+            }
+        },[localStorage.getItem("userLoggedIn")]
+    )
+
+
+    useEffect(
+        ()=>{
+            if(localStorage.getItem("adminLoggedIn")=="true"){
+                auth.setAdminLoggedIn(true);
+            }
+        },[localStorage.getItem("adminLoggedIn")]
+    )
+
+
 
     const navigate = useNavigate();
     
@@ -39,13 +56,11 @@ export const Header = ()=>{
             {
                 !auth.dbConnect &&
                 <div className="loadingdb">
-                    <img src={loading} ></img>
+                    <img src={loading} className = "img-fluid" ></img>
                 </div>
             
             }
-
-            {
-                auth.dbConnect &&
+            {/* <Footer/> */}
             <Navbar bg="dark" variant = "dark" expand="md" className="menubar" sticky = "top" style={{
                 padding:"15px",
             }}> 
@@ -65,19 +80,23 @@ export const Header = ()=>{
                             <Nav.Link onClick={()=>navigate("/contact")}>ContactUs</Nav.Link>
                             
                             {   
-                                !auth.loggedIn && 
-                                <Nav.Link onClick={()=>navigate("/login")}>Login/SignUp</Nav.Link>
+                                (!auth.userLoggedIn && !auth.adminLoggedIn) && 
+                                <Nav.Link onClick={()=>navigate("/userlogin")}>Login/SignUp</Nav.Link>
                             }
 
                             {
-                                auth.loggedIn && 
+                                auth.userLoggedIn && 
                                 <Nav.Link onClick={()=>navigate("/profile")}>Profile</Nav.Link>
+                            }
+
+                            {
+                                auth.adminLoggedIn && 
+                                <Nav.Link onClick={()=>navigate("/")}>Admin Dashboard</Nav.Link>
                             }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            }
 
         </>
     );

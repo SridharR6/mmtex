@@ -1,0 +1,10 @@
+.footer{
+
+    background-color:#4f4f4f;
+    color: white;
+    padding-top: 8px;
+    padding-bottom: 10px;
+ }
+ ul.nobullets{
+     list-style-type: none;
+ }

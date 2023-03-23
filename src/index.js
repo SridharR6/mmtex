@@ -10,8 +10,9 @@ import { Products } from './components/Products';
 import { Profile } from './components/Profile';
 import { AuthenticationProvider } from './components/Authentication';
 import { Header } from './components/Header';
-import { Login } from './components/Login';
+import { UserLogin } from './components/UserLogin';
 import { SignUp } from './components/SignUp';
+import { AdminLogin } from './components/AdminLogin';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,7 +27,8 @@ root.render(
                 <Route path='/products' element = {<Products/>}></Route>
                 <Route path='/profile' element = {<Profile/>}></Route>
                 <Route path='/signup' element = {<SignUp/>}></Route>
-                <Route path='/Login' element = {<Login/>}></Route>
+                <Route path='/userlogin' element = {<UserLogin/>}></Route>
+                <Route path='/adminlogin' element = {<AdminLogin/>}></Route>
             </Routes>
         </AuthenticationProvider>
     </HashRouter>
