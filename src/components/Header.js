@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import loading from "../images/loading.gif";
+import logo1 from "../images/logo1.jpg";
 
 export const Header = ()=>{
     
@@ -70,15 +71,20 @@ export const Header = ()=>{
                 padding:"15px",
             }}> 
                 <Container fluid>
-                    <Navbar.Brand onClick={()=>navigate("/aboutus")} style = {{cursor:"pointer"}}>MM Tex</Navbar.Brand>
+                    <Navbar.Brand onClick={()=>navigate("/aboutus")} style = {{cursor:"pointer",display:"flex", justifyContent:"center",alignItems:"center"}}>
+                        <img src={logo1} alt = "logo" className="img-fluid" style={{borderRadius:"200px",height:"38px"}}>
+                        </img>
+                        <div style={{fontSize:"20px",display:"flex"}}>Tex</div>
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav>
                             <Nav.Link onClick={()=>navigate("/")}>Home</Nav.Link>
 
                             <NavDropdown title="Products" id="navbarScrollingDropdown" bg = "dark">
-                                <NavDropdown.Item onClick={()=>navigate("/products")}>Cotton Rolls</NavDropdown.Item>
-                                <NavDropdown.Item onClick={()=>navigate("/products")}>Kitchen Towels</NavDropdown.Item>
+                                <NavDropdown.Item onClick={()=>navigate("/rolls")}>Rolls</NavDropdown.Item>
+                                <NavDropdown.Item onClick={()=>navigate("/kitchentowels")}>Kitchen Towels</NavDropdown.Item>
+                                <NavDropdown.Item onClick={()=>navigate("/singles")}>Singles</NavDropdown.Item>
                             </NavDropdown>
                             
                             <Nav.Link onClick={()=>navigate("/aboutus")}>AboutUs</Nav.Link>

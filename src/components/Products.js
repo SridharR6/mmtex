@@ -1,6 +1,6 @@
-import { MDBContainer, MDBInput, MDBRow,MDBCol, MDBBtn } from "mdb-react-ui-kit";
+import { MDBContainer, MDBRow,MDBCol, MDBBtn } from "mdb-react-ui-kit";
 import { Footer } from "./Footer";
-import "../styles/Products.css";
+// import "../styles/Products.css";
 import parking1 from "../images/parking1.jpg";
 export const Products = ()=>{
     return(
@@ -101,7 +101,6 @@ export const Products = ()=>{
             </MDBRow>
         </MDBContainer>
         <br></br>
-        <Footer/>
             <Footer/>
         </>
     );

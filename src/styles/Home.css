@@ -1,0 +1,35 @@
+.carousel img{
+    width:60%;
+}
+.carousel{
+    /* background: linear-gradient(#fafbfd, #8b8d8e); */
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+}
+
+
+.cardimage{
+    width:100%;
+    cursor: pointer;
+    opacity: 0.9;
+    border-radius: 10px 10px 0px 0px;
+    transition: all 0.3s;
+}
+
+.cardd{
+    border-radius: 10px;
+    margin:5px 20px 50px 20px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.4);
+    transition: all 0.3s;
+}
+.cardd:hover{
+    box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.6);
+}
+.cardcontent{
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 10px;
+    text-align: center;
+}

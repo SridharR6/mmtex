@@ -13,6 +13,9 @@ import { Header } from './components/Header';
 import { UserLogin } from './components/UserLogin';
 import { SignUp } from './components/SignUp';
 import { AdminLogin } from './components/AdminLogin';
+import { KitchenTowels } from './components/KitchenTowels';
+import { Singles } from './components/Singles';
+import { Rolls } from './components/Rolls';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,11 +27,14 @@ root.render(
                 <Route path='/home' element = {<Home/>}></Route>
                 <Route path='/aboutus' element = {<AboutUs/>}></Route>
                 <Route path='/contact' element = {<Contact/>}></Route>
-                <Route path='/products' element = {<Products/>}></Route>
                 <Route path='/profile' element = {<Profile/>}></Route>
                 <Route path='/signup' element = {<SignUp/>}></Route>
                 <Route path='/userlogin' element = {<UserLogin/>}></Route>
                 <Route path='/adminlogin' element = {<AdminLogin/>}></Route>
+                <Route path='/kitchentowels' element = {<KitchenTowels/>}></Route>
+                <Route path='/singles' element = {<Singles/>}></Route>
+                <Route path='/rolls' element = {<Rolls/>}></Route>
+
             </Routes>
         </AuthenticationProvider>
     </HashRouter>
