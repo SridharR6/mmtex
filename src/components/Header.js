@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import loading from "../images/loading.gif";
-// import { Footer } from "./Footer";
 
 export const Header = ()=>{
     
@@ -34,6 +33,9 @@ export const Header = ()=>{
             if(localStorage.getItem("userLoggedIn")=="true"){
                 auth.setUserLoggedIn(true);
             }
+            if(localStorage.getItem("userLoggedIn")==null){
+                auth.setUserLoggedIn(false);
+            }
         },[localStorage.getItem("userLoggedIn")]
     )
 
@@ -42,6 +44,9 @@ export const Header = ()=>{
         ()=>{
             if(localStorage.getItem("adminLoggedIn")=="true"){
                 auth.setAdminLoggedIn(true);
+            }
+            if(localStorage.getItem("adminLoggedIn")==null){
+                auth.setAdminLoggedIn(false);
             }
         },[localStorage.getItem("adminLoggedIn")]
     )

@@ -1,4 +1,4 @@
-import { MDBContainer, MDBInput, MDBRow,MDBCol, MDBBtn } from "mdb-react-ui-kit";
+import { MDBContainer, MDBInput, MDBRow,MDBCol } from "mdb-react-ui-kit";
 import {useState } from "react";
 import "../styles/SignUp.css";
 import { useNavigate } from "react-router-dom";
