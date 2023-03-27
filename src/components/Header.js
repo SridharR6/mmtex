@@ -68,13 +68,13 @@ export const Header = ()=>{
             }
             {/* <Footer/> */}
             <Navbar bg="dark" variant = "dark" expand="md" className="menubar" sticky = "top" style={{
-                padding:"15px",
+                padding:"20px",
             }}> 
                 <Container fluid>
                     <Navbar.Brand onClick={()=>navigate("/aboutus")} style = {{cursor:"pointer",display:"flex", justifyContent:"center",alignItems:"center"}}>
-                        <img src={logo1} alt = "logo" className="img-fluid" style={{borderRadius:"200px",height:"38px"}}>
+                        <img src={logo1} alt = "logo" className="img-fluid" style={{borderRadius:"200px",height:"55px"}}>
                         </img>
-                        <div style={{fontSize:"20px",display:"flex"}}>Tex</div>
+                        <div style={{fontSize:"35px",display:"flex", fontFamily:"arial",fontStyle:"italic", fontWeight:"bolder"}}>Tex</div>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">

@@ -7,7 +7,7 @@ export const KitchenTowels = ()=>{
     return(
         <>
             <MDBContainer>
-            <MDBRow center style={{fontWeight : "bold",fontSize:"larger",fontFamily:"Times New Roman",textDecoration:"underline",marginTop:"25px"}}>
+            <MDBRow center style={{fontWeight : "bold",fontSize:"35px",fontFamily:"Times New Roman",textDecoration:"underline",marginTop:"25px"}}>
                 Kitchen Towels
             </MDBRow>
             <br></br>

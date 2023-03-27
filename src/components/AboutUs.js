@@ -5,7 +5,7 @@ export const AboutUs = ()=>{
     return(
         <>
 
-            <MDBContainer>
+            {/* <MDBContainer>
                 <MDBRow>
                     <MDBCol>
                         <center><h2 style={{fontFamily:"'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif",fontSize:"40px"}}>Who We Are?</h2></center>
@@ -69,7 +69,7 @@ export const AboutUs = ()=>{
                 </MDBRow>
 
             </MDBContainer>
-            <Footer/>
+            <Footer/> */}
         </>
     );
 }
